@@ -7,6 +7,7 @@ import SequelizeTeam from '../database/models/sequelizeTeam';
 import chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 
+import { expect } from 'chai';
 const { app } = new App();
 
 const team = {
