@@ -5,3 +5,6 @@ export interface IUsers {
   email: string;
   password: string;
 }
+export interface IUsersModel {
+  findByEmail(email: string): Promise<IUsers | null>;
+}
