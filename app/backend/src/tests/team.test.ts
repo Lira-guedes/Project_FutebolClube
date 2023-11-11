@@ -1,7 +1,7 @@
 import * as sinon from 'sinon';
 import * as chai from 'chai';
 import { App } from '../app';
-import SequelizeTeam from '../database/models/sequelizeTeam';
+import SequelizeTeam from '../database/models/SequelizeTeam';
 
 // @ts-ignore
 import chaiHttp = require('chai-http');
