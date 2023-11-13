@@ -9,9 +9,9 @@ export interface IMatches {
 
 export interface IMatchesModel {
   findAll(): Promise<IMatches[]>
-  findByQuery(q: string): Promise<IMatches[]>
-  finishMatch(id: IMatches['id']): Promise<void>
-  updateById(id: IMatches['id'], homeTeamGoals: IMatches['homeTeamGoals'],
-    awayTeamGoals: IMatches['awayTeamGoals']): Promise<void>
-  create(data: Partial<IMatches>): Promise<IMatches>
+  findByProgress(inProgress: boolean): Promise<IMatches[]>;
+  // findByQuery(q: string): Promise<IMatches[]>
+  // finishMatch(id: IMatches['id']): Promise<void>
+  // update(id: number, data: Partial<IMatches>): Promise<void>;
+  // create(data: Partial<IMatches>): Promise<IMatches>
 }
