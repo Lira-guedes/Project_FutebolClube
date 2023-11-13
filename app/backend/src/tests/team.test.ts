@@ -17,7 +17,7 @@ const team = {
 const teams = [team];
 
 describe('Teams', () => {
-  it('Retorna teams', async () => {
+  it('Retorna todos os teams', async () => {
     sinon.stub(SequelizeTeam, 'findAll').resolves(teams as any);
 
     const { status, body } = await chai.request(app).get('/teams');
@@ -25,4 +25,13 @@ describe('Teams', () => {
     expect(status).to.equal(200);
     expect(body).to.deep.equal(teams);
   });
+    it('Retorna os teams pelo id', async () => {
+    sinon.stub(SequelizeTeam, 'findByPk').resolves(team as any);
+
+    const { status, body } = await chai.request(app).get(`/teams/${team.id}`);
+
+    expect(status).to.equal(200);
+    expect(body).to.deep.equal(team);
+  });
+
 });
