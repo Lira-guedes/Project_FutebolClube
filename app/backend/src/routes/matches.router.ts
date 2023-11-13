@@ -5,7 +5,7 @@ const matchesController = new MatchesController();
 const router = Router();
 
 router.get('/', (req: Request, res: Response) => {
-  if (req.query) {
+  if (req.query.inProgress) {
     matchesController.getByProgress(req, res);
   } else {
     matchesController.getAll(req, res);
