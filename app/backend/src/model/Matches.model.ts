@@ -22,7 +22,10 @@ export default class MatchesModel implements IMatchesModel {
         { model: SequelizeTeam, as: 'homeTeam', attributes: ['teamName'] },
       ],
     });
-
     return matches;
+  }
+
+  async finishMatch(id: IMatches['id']): Promise<void> {
+    await this.model.update({ inProgress: false }, { where: { id } });
   }
 }

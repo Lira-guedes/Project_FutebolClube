@@ -1,4 +1,5 @@
 import { Request, Router, Response } from 'express';
+import TokenValidation from '../middlewares/TokenValidation';
 import MatchesController from '../controller/Matches.controller';
 
 const matchesController = new MatchesController();
@@ -11,4 +12,8 @@ router.get('/', (req: Request, res: Response) => {
     matchesController.getAll(req, res);
   }
 });
+router.patch('/:id/finish', TokenValidation.validation, (_req: Request, res: Response) => {
+  matchesController.finishMatch(_req, res);
+});
+
 export default router;
