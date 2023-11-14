@@ -15,8 +15,8 @@ router.get('/', (req: Request, res: Response) => {
 router.patch('/:id/finish', TokenValidation.validation, (_req: Request, res: Response) => {
   matchesController.finishMatch(_req, res);
 });
-router.patch('/:id', TokenValidation.validation, (req: Request, res: Response) => {
-  matchesController.updateMatch(req, res);
-});
+// router.patch('/:id', TokenValidation.validation, (req: Request, res: Response) => {
+//   matchesController.updateMatch(req, res);
+// });
 
 export default router;

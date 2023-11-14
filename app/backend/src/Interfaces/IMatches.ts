@@ -11,6 +11,6 @@ export interface IMatchesModel {
   findAll(): Promise<IMatches[]>
   findByProgress(inProgress: boolean): Promise<IMatches[]>;
   finishMatch(id: IMatches['id']): Promise<void>
-  updateMatch(id: number, data: Partial<IMatches>): Promise<void>;
+  // update(id: number, data: Partial<IMatches>): Promise<void>;
   // create(data: Partial<IMatches>): Promise<IMatches>
 }
