@@ -1,3 +1,5 @@
+import { ServiceMessage } from './ServiceResponse';
+
 export interface IMatches {
   id: number,
   homeTeamId: number,
@@ -11,6 +13,7 @@ export interface IMatchesModel {
   findAll(): Promise<IMatches[]>
   findByProgress(inProgress: boolean): Promise<IMatches[]>;
   finishMatch(id: IMatches['id']): Promise<void>
-  // update(id: number, data: Partial<IMatches>): Promise<void>;
-  // create(data: Partial<IMatches>): Promise<IMatches>
+  findById(id: number): Promise<IMatches | null>;
+  updateMatch(id: number, body: { homeTeamGoals: number; awayTeamGoals: number }):
+  Promise<ServiceMessage>;
 }

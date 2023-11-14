@@ -22,4 +22,11 @@ export default class MatchesService {
 
     return { status: 'SUCCESSFUL', data: { message: 'Finished' } };
   }
+
+  public async updateMatch(matchId: number, body: { homeTeamGoals: number; awayTeamGoals: number }):
+  Promise<ServiceResponse<ServiceMessage>> {
+    const modelResponse = await this.matchesModel.updateMatch(matchId, body);
+
+    return { status: 'SUCCESSFUL', data: modelResponse };
+  }
 }
