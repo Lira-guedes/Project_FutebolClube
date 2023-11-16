@@ -16,4 +16,5 @@ export interface IMatchesModel {
   findById(id: number): Promise<IMatches | null>;
   updateMatch(id: number, body: { homeTeamGoals: number; awayTeamGoals: number }):
   Promise<ServiceMessage>;
+  create(data: IMatches): Promise<IMatches>,
 }

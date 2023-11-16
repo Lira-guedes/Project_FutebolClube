@@ -48,6 +48,11 @@ export default class MatchesModel implements IMatchesModel {
       await this.model.update(body, { where: { id } });
       return { message: 'Updated' };
     }
-    return { message: 'Error' };
+    return { message: 'Errorr' };
+  }
+
+  async create(data: IMatches): Promise<IMatches> {
+    const createMatch = await this.model.create(data);
+    return createMatch;
   }
 }
