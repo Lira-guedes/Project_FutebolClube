@@ -15,13 +15,13 @@ export default class MatchesController {
   public async getByProgress(req: Request, res: Response) {
     const { inProgress } = req.query;
     const { status, data } = await this.matchesService.getByProgress(inProgress === 'true');
-    res.status(mapStatusHttp(status)).json(data);
+    return res.status(mapStatusHttp(status)).json(data);
   }
 
   public async finishMatch(req: Request, res: Response) {
     const { id } = req.params;
     const { status, data } = await this.matchesService.finishMatch(Number(id));
-    res.status(mapStatusHttp(status)).json(data);
+    return res.status(mapStatusHttp(status)).json(data);
   }
 
   public async updateMatch(req: Request, res: Response) {
@@ -32,8 +32,9 @@ export default class MatchesController {
 
   public async createMatches(req: Request, res: Response) {
     const match = { ...req.body, inProgress: true };
+    const { status, data } = await this.matchesService.createMatches(match);
 
-    const { data } = await this.matchesService.createMatches(match);
+    if (status === 'NOT_FOUND') return res.status(404).json(data);
 
     return res.status(201).json(data);
   }
