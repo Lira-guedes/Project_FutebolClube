@@ -35,4 +35,27 @@ export default class LeaderboardModel {
     });
     return Promise.all(leaderboard);
   }
+
+  async getAway(): Promise<ILeaderboard[]> {
+    const allTeams = await this.findAllTeams();
+    const finishMatches = await this.finishMatches();
+
+    const leaderboard = allTeams.map(async (team) => {
+      const teamMatches = finishMatches.filter((M) => M.awayTeamId === team.id);
+      const wins = teamMatches.filter((M) => M.awayTeamGoals > M.homeTeamGoals);
+      const draws = teamMatches.filter((M) => M.awayTeamGoals === M.homeTeamGoals);
+      const losses = teamMatches.filter((M) => M.awayTeamGoals < M.homeTeamGoals);
+
+      return { name: team.teamName,
+        totalPoints: wins.length * 3 + draws.length,
+        totalGames: teamMatches.length,
+        totalVictories: wins.length,
+        totalDraws: draws.length,
+        totalLosses: losses.length,
+        goalsFavor: teamMatches.reduce((total, matches) => total + matches.awayTeamGoals, 0),
+        goalsOwn: teamMatches.reduce((total, matches) => total + matches.homeTeamGoals, 0),
+      };
+    });
+    return Promise.all(leaderboard);
+  }
 }
