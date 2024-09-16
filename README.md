@@ -1,4 +1,4 @@
-# Futebol Clube
+# Trybe Futebol Clube
 <p>O projeto Futebol Clube consiste na criação de uma API que será consumida por um front-end já disponível. O objetivo é desenvolver um site informativo sobre partidas e classificações de futebol, utilizando Docker Compose para facilitar a integração entre o back-end e o front-end, juntamente com um banco de dados.</p>
 
 ![Captura de Tela 2024-09-16 às 14 52 18](https://github.com/user-attachments/assets/1769fcdf-88d4-4b1e-9e46-8b30c937b94a)
